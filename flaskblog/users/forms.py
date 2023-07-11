@@ -1,9 +1,10 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
 from flask_login import current_user
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from flaskblog.models import User
+
 
 class RegistrationForm(FlaskForm):
     username = StringField(label='Username',
@@ -60,12 +61,6 @@ class LoginForm(FlaskForm):
                            validators=[DataRequired()])
     remember = BooleanField(label='Remember Me')
     submit = SubmitField(label='Log In')
-
-
-class PostForm(FlaskForm):
-    title = StringField(label='Title', validators=[DataRequired()])
-    content = TextAreaField(label='Content', validators=[DataRequired()])
-    submit = SubmitField(label='Post')
 
 class RequestResetForm(FlaskForm):
     email = StringField(label='Email',
